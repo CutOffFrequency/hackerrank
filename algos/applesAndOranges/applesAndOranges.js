@@ -4,6 +4,7 @@ function countApplesAndOranges(s, t, a, b, apples, oranges) {
   apples.forEach(d => {
     if (a + d >= s && a + d <= t) fruitsInRange[0] += 1;
   });
+  // same as above for the second tree
   oranges.forEach(d => {
     if (b + d >= s && b + d <= t) fruitsInRange[1] += 1;
   });

@@ -1,5 +1,7 @@
 function bonAppetit(bill, k, b) {
+  // remove value that isn't being split and sum the rest then divide by two
   let share = bill.filter((_, i) => i !== k).reduce((a, b) => a + b) / 2;
+  // if result is not the target value, log the difference
   console.log(share === b ? "Bon Appetit" : b - share);
 }
 

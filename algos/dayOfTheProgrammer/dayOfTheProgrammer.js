@@ -1,4 +1,5 @@
 function dayOfProgrammer(year) {
+  // return value for outlier else
   return year === 1918
     ? "26.09.1918"
     : year < 1918
@@ -6,7 +7,7 @@ function dayOfProgrammer(year) {
         year % 4 === 0
         ? `12.09.${year}`
         : `13.09.${year}`
-      : // gregorian calendar
+      : // or gregorian calendar
         year % 400 === 0
         ? `12.09.${year}`
         : year % 100 === 0

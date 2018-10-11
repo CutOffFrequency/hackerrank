@@ -1,10 +1,16 @@
 function migratoryBirds(arr) {
+  // iterate over list of birds
   let birds = arr.reduce(
     (tally, current, i, birbs) => {
+      // increment tally for current
       tally[current] += 1;
+      // if current is equals highest tally
       if (tally[current] === tally.highValue)
+        // add to highest array
         tally.highKeys = [...tally.highKeys, current];
+      // if current is new highest tally
       if (tally[current] > tally.highValue) {
+        // reassign high values
         tally.highValue = tally[current];
         tally.highKeys = [current];
       }
