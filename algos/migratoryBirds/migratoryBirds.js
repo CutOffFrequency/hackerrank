@@ -1,5 +1,3 @@
-const assert = require("assert");
-
 function migratoryBirds(arr) {
   let birds = arr.reduce(
     (tally, current, i, birbs) => {
