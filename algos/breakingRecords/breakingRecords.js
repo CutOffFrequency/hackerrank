@@ -1,27 +1,25 @@
 let breakingRecords = scores => {
-  let records = scores.reduce((stats, current, i) => {
-    if (i < 1) {
-      // initialize stats
-      return {
-        highest: current,
-        highs: 0,
-        lowest: current,
-        lows: 0
-      };
-    } else {
+  let records = scores.reduce(
+    (stats, current, i) => {
       // if current score is new highest adjust stats
-      if (current > stats.highest) {
+      if (stats.highest === null || current > stats.highest) {
+        stats.highs += stats.lowest === null ? 0 : 1;
         stats.highest = current;
-        stats.highs += 1;
       }
       // if current score is new lowest adjust stats
-      if (current < stats.lowest) {
+      if (stats.lowest === null || current < stats.lowest) {
+        stats.lows += stats.lowest === null ? 0 : 1;
         stats.lowest = current;
-        stats.lows += 1;
       }
       return stats;
+    },
+    {
+      highest: null,
+      highs: 0,
+      lowest: null,
+      lows: 0
     }
-  }, {});
+  );
   return [records.highs, records.lows];
 };
 
