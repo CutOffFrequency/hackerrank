@@ -1,6 +1,6 @@
 function catAndMouse(x, y, z) {
-  return x === y
-    ? // if x and y are on the same point
+  return Math.abs(z - x) === Math.abs(z - y)
+    ? // if x and y are equidistant from z
       "Mouse C"
     : Math.min(...[x, y, z]) === z
       ? // if z is the lowest, get the lower of x and y
@@ -12,13 +12,10 @@ function catAndMouse(x, y, z) {
           Math.max(...[x, y]) === x
           ? "Cat A"
           : "Cat B"
-        : // if z is equidistant from x and y
-          Math.abs(z - x) === Math.abs(z - y)
-          ? "Mouse C"
-          : // else get the closest of x and y
-            Math.abs(z - x) < Math.abs(z - y)
-            ? "Cat A"
-            : "Cat B";
+        : // else get the closest of x and y
+          Math.abs(z - x) < Math.abs(z - y)
+          ? "Cat A"
+          : "Cat B";
 }
 
 module.exports = {
