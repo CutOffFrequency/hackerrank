@@ -52,7 +52,7 @@
 //   ).ranks;
 // }
 
-// and the solution after that...
+// and the solution after that is now passing 9 out of 12 test cases! PROGRESS!
 //
 function climbingLeaderboard(scores, alice) {
   let records = new Map();
