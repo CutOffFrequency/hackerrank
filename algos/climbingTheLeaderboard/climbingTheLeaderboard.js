@@ -70,7 +70,7 @@ function climbingLeaderboard(scores, alice) {
       // if higher than highest value: 1
     } else if (alice[i] > scores[0]) {
       newRank = 1;
-      // if lower than lowest: length
+      // if lower than lowest: length - 1
     } else if (alice[i] < scores[scores.length - 1]) {
       newRank = rank++;
       // if lower than a given value but higher than prev: next rank + 1
@@ -78,6 +78,7 @@ function climbingLeaderboard(scores, alice) {
       let j = index;
       while (alice[i] > scores[j]) {
         j--;
+        // recache index to prevent unnecessary iterations
         let index = j;
       }
       newRank = records.get(scores[j]) + 1;
