@@ -53,42 +53,36 @@
 // }
 
 // and the solution after that...
-
+//
 function climbingLeaderboard(scores, alice) {
-  let records = [];
+  let records = new Map();
+  let rank = 1;
   let ranks = [];
-  let recordIndex = 0;
-  let playerIndex = 0;
-  // rank records
-  while (recordIndex < scores.length) {
-    records = records.includes(scores[recordIndex])
-      ? records
-      : [scores[recordIndex], ...records];
-    recordIndex++;
+  let index = scores.length - 1;
+  let newRank;
+  for (let i = 0; i < scores.length; i++) {
+    if (!records.has(scores[i])) records.set(scores[i], rank++);
   }
-  // reset index to zero and rank player scores
-  recordIndex = 0;
-  while (playerIndex < alice.length) {
-    let newRank;
-    let current = alice[playerIndex];
-    // if current score has already been ranked, add rank
-    if (records.includes(current)) {
-      newRank = records.length - records.indexOf(current);
-      // else calculate rank and add
+  for (let i = 0; i < alice.length; i++) {
+    // if value exists: rank of value
+    if (records.has(alice[i])) {
+      newRank = records.get(alice[i]);
+      // if higher than highest value: 1
+    } else if (alice[i] > scores[0]) {
+      newRank = 1;
+      // if lower than lowest: length
+    } else if (alice[i] < scores[scores.length - 1]) {
+      newRank = rank++;
+      // if lower than a given value but higher than prev: next rank + 1
     } else {
-      // if current is higher than highest rank add rank of 1
-      if (current > records[records.length - 1]) {
-        newRank = 1;
-      } else {
-        // increment index while current is greater than records by index
-        while (recordIndex < records.length && current > records[recordIndex]) {
-          recordIndex++;
-        }
-        newRank = records.length - recordIndex + 1;
+      let j = index;
+      while (alice[i] > scores[j]) {
+        j--;
+        let index = j;
       }
+      newRank = records.get(scores[j]) + 1;
     }
     ranks = [...ranks, newRank];
-    playerIndex++;
   }
   return ranks;
 }
