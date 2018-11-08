@@ -7,5 +7,10 @@ function saveThePrisoner(n, m, s) {
     // else use modulo to calculate the position
     final = (m % n) + s - 1;
   }
-  return final <= n ? final : final - n;
+  // if final is greater than the number of prisoners, subtract them
+  final = final <= n ? final : final - n;
+  // if final is zero, return last number else final
+  return final === 0 ? n : final;
 }
+
+console.log(saveThePrisoner(5, 2, 2));
