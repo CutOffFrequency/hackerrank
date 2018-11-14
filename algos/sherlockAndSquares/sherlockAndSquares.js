@@ -15,10 +15,9 @@ function squares(a, b) {
 
 */
 
-// this solution passes 8 out of 9 cases, I'm probably missing an edge case here...
-
 function squares(a, b) {
   let tally = a % Math.sqrt(a) === 0 ? 1 : 0;
+  if (a === b) return tally;
   let prevSqr = Math.floor(Math.sqrt(a)) + 1;
   if (Math.pow(prevSqr, 2) > b) return 0;
   while (Math.pow(prevSqr, 2) <= b) {
@@ -27,3 +26,5 @@ function squares(a, b) {
   }
   return tally;
 }
+
+module.exports = { squares };

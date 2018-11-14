@@ -54,6 +54,7 @@
 
 // and the solution after that is now passing 9 out of 12 test cases! PROGRESS!
 //
+/*
 function climbingLeaderboard(scores, alice) {
   let records = new Map();
   let rank = 1;
@@ -87,6 +88,9 @@ function climbingLeaderboard(scores, alice) {
   }
   return ranks;
 }
+*/
+
+const climbingLeaderboard = (scores, alice) => {};
 
 console.log(
   climbingLeaderboard([100, 100, 50, 40, 40, 20, 10], [5, 25, 50, 120])
